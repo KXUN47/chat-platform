@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="
+         http://maven.apache.org/POM/4.0.0
+         https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- ====================================================== -->
+    <!-- Project Information -->
+    <!-- ====================================================== -->
+
+    <groupId>com.matlasystems.chat</groupId>
+
+    <artifactId>chat-platform</artifactId>
+
+    <version>1.0.0-SNAPSHOT</version>
+
+    <packaging>pom</packaging>
+
+    <name>MATLA Chat Platform</name>
+
+    <description>
+        Enterprise TCP Chat Platform built with Java 21.
+    </description>
+
+    <!-- ====================================================== -->
+    <!-- Modules -->
+    <!-- ====================================================== -->
+
+    <modules>
+
+        <module>chat-common</module>
+
+        <!--
+
+        <module>chat-protocol</module>
+
+        <module>chat-server</module>
+
+        <module>chat-client</module>
+
+        <module>chat-database</module>
+
+        <module>chat-api</module> -->
+
+    </modules>
+
+    <!-- ====================================================== -->
+    <!-- Java Version -->
+    <!-- ====================================================== -->
+
+    <properties>
+
+        <project.build.sourceEncoding>
+            UTF-8
+        </project.build.sourceEncoding>
+
+        <maven.compiler.source>
+            21
+        </maven.compiler.source>
+
+        <maven.compiler.target>
+            21
+        </maven.compiler.target>
+
+        <java.version>
+            21
+        </java.version>
+
+        <!-- Dependency Versions -->
+
+        <junit.version>
+            5.13.4
+        </junit.version>
+
+        <mockito.version>
+            5.19.0
+        </mockito.version>
+
+        <postgresql.version>
+            42.7.8
+        </postgresql.version>
+
+        <hikari.version>
+            7.0.2
+        </hikari.version>
+
+        <slf4j.version>
+            2.0.17
+        </slf4j.version>
+
+        <logback.version>
+            1.5.18
+        </logback.version>
+
+        <jackson.version>
+            2.20.0
+        </jackson.version>
+        <jbcrypt.version>0.4</jbcrypt.version>
+
+    </properties>
+
+    <!-- ====================================================== -->
+    <!-- Dependency Management -->
+    <!-- ====================================================== -->
+
+    <dependencyManagement>
+
+        <dependencies>
+
+            <dependency>
+                <groupId>org.mindrot</groupId>
+                <artifactId>jbcrypt</artifactId>
+                <version>${jbcrypt.version}</version>
+            </dependency>
+
+            <!-- PostgreSQL -->
+
+            <dependency>
+
+                <groupId>org.postgresql</groupId>
+
+                <artifactId>postgresql</artifactId>
+
+                <version>${postgresql.version}</version>
+
+            </dependency>
+
+            <!-- Jackson -->
+
+            <dependency>
+
+                <groupId>com.fasterxml.jackson.core</groupId>
+
+                <artifactId>jackson-databind</artifactId>
+
+                <version>${jackson.version}</version>
+
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.datatype</groupId>
+                <artifactId>jackson-datatype-jsr310</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+
+            <!-- Hikari -->
+
+            <dependency>
+
+                <groupId>com.zaxxer</groupId>
+
+                <artifactId>HikariCP</artifactId>
+
+                <version>${hikari.version}</version>
+
+            </dependency>
+
+            <!-- SLF4J -->
+
+            <dependency>
+
+                <groupId>org.slf4j</groupId>
+
+                <artifactId>slf4j-api</artifactId>
+
+                <version>${slf4j.version}</version>
+
+            </dependency>
+
+            <!-- Logback -->
+
+            <dependency>
+
+                <groupId>ch.qos.logback</groupId>
+
+                <artifactId>logback-classic</artifactId>
+
+                <version>${logback.version}</version>
+
+            </dependency>
+
+            <!-- JUnit -->
+
+            <dependency>
+
+                <groupId>org.junit.jupiter</groupId>
+
+                <artifactId>junit-jupiter</artifactId>
+
+                <version>${junit.version}</version>
+
+                <scope>test</scope>
+
+            </dependency>
+
+            <!-- Mockito -->
+
+            <dependency>
+
+                <groupId>org.mockito</groupId>
+
+                <artifactId>mockito-core</artifactId>
+
+                <version>${mockito.version}</version>
+
+                <scope>test</scope>
+
+            </dependency>
+
+        </dependencies>
+
+    </dependencyManagement>
+
+    <!-- ====================================================== -->
+    <!-- Plugin Management -->
+    <!-- ====================================================== -->
+
+    <build>
+
+        <pluginManagement>
+
+            <plugins>
+
+                <!-- Java Compiler -->
+
+                <plugin>
+
+                    <groupId>org.apache.maven.plugins</groupId>
+
+                    <artifactId>maven-compiler-plugin</artifactId>
+
+                    <version>3.14.0</version>
+
+                    <configuration>
+
+                        <source>${java.version}</source>
+
+                        <target>${java.version}</target>
+
+                    </configuration>
+
+                </plugin>
+
+                <!-- Unit Testing -->
+
+                <plugin>
+
+                    <groupId>org.apache.maven.plugins</groupId>
+
+                    <artifactId>maven-surefire-plugin</artifactId>
+
+                    <version>3.5.4</version>
+
+                </plugin>
+
+                <!-- Package Plugin -->
+
+                <plugin>
+
+                    <groupId>org.apache.maven.plugins</groupId>
+
+                    <artifactId>maven-jar-plugin</artifactId>
+
+                    <version>3.4.2</version>
+
+                </plugin>
+
+                <!-- Clean -->
+
+                <plugin>
+
+                    <groupId>org.apache.maven.plugins</groupId>
+
+                    <artifactId>maven-clean-plugin</artifactId>
+
+                    <version>3.5.0</version>
+
+                </plugin>
+
+                <!-- Install -->
+
+                <plugin>
+
+                    <groupId>org.apache.maven.plugins</groupId>
+
+                    <artifactId>maven-install-plugin</artifactId>
+
+                    <version>3.1.4</version>
+
+                </plugin>
+
+            </plugins>
+
+        </pluginManagement>
+
+    </build>
+
+</project>
