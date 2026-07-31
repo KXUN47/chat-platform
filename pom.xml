@@ -34,9 +34,9 @@
 
         <module>chat-common</module>
 
-        <!--
-
         <module>chat-protocol</module>
+
+        <!--
 
         <module>chat-server</module>
 
@@ -72,6 +72,10 @@
 
         <!-- Dependency Versions -->
 
+        <jakarta.version>3.1.1</jakarta.version>
+
+        <jackson.version>2.19.2</jackson.version>
+
         <junit.version>
             5.13.4
         </junit.version>
@@ -79,6 +83,8 @@
         <mockito.version>
             5.19.0
         </mockito.version>
+
+        <mockito.version>5.20.0</mockito.version>
 
         <postgresql.version>
             42.7.8
@@ -96,9 +102,6 @@
             1.5.18
         </logback.version>
 
-        <jackson.version>
-            2.20.0
-        </jackson.version>
         <jbcrypt.version>0.4</jbcrypt.version>
 
     </properties>
@@ -144,6 +147,18 @@
             <dependency>
                 <groupId>com.fasterxml.jackson.datatype</groupId>
                 <artifactId>jackson-datatype-jsr310</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
                 <version>${jackson.version}</version>
             </dependency>
 
@@ -209,6 +224,19 @@
 
                 <scope>test</scope>
 
+            </dependency>
+
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-junit-jupiter</artifactId>
+                <version>${mockito.version}</version>
+            </dependency>
+
+            <!-- Jakarta Validation -->
+            <dependency>
+                <groupId>jakarta.validation</groupId>
+                <artifactId>jakarta.validation-api</artifactId>
+                <version>${jakarta.version}</version>
             </dependency>
 
         </dependencies>
@@ -291,6 +319,12 @@
 
                     <version>3.1.4</version>
 
+                </plugin>
+
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>0.8.13</version>
                 </plugin>
 
             </plugins>

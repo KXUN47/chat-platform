@@ -43,7 +43,7 @@ public final class ProtocolConstants {
     /*
      * Messaging
      */
-    public static final String MESSAGE =
+    public static final String SEND_MESSAGE =
             "MESSAGE";
 
     public static final String PRIVATE_MESSAGE =

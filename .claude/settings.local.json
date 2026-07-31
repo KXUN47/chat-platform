@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rm \"chat-protocol/src/main/java/com/matystems/chat/protocol/validator/InvalidCommandException.java\")",
+      "Bash(rmdir -p \"chat-protocol/src/main/java/com/matystems/chat/protocol/validator\")",
+      "Bash(echo \"exit: $?\")",
+      "Bash(mvn -q -pl chat-protocol -am compile)",
+      "Bash(mvn -q -pl chat-protocol -am clean compile)",
+      "Bash(mkdir -p \"chat-protocol/src/main/java/com/matlasystems/chat/protocol/validator\" *)",
+      "Bash(mvn -q -pl chat-protocol -am test-compile)",
+      "Bash(mvn -q -pl chat-protocol -am test)",
+      "Bash(awk '{fails+=$5+0; errs+=$8+0; tests+=$3+0} END{gsub\\(\",\",\"\",$0\\)} {print} END{print \"---\"; print \"files:\", NR}')",
+      "Bash(mvn -pl chat-protocol -am clean test)",
+      "Bash(mvn -pl chat-protocol -am test)"
+    ],
+    "additionalDirectories": [
+      "C:\\Development\\PortfolioProjects\\Chat-Platform\\chat-protocol\\validator"
+    ]
+  }
+}
